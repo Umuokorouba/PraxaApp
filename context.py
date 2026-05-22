@@ -1,6 +1,7 @@
 import gdown
 from pathlib import Path
-#from ??? import ???
+from langchain_community.document_loaders \
+        import PyPDFDirectoryLoader
 from langchain_core.documents import Document
 from langchain_core.embeddings import Embeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -33,9 +34,8 @@ def load_context_data(path: str = "./context_data") -> list[Document]:
     :type path: str
     :return: list of Document objects
     :rtype: list[Document]
-    """
-#    loader = ???
-#    return ???
+loader = PyPDFDirectoryLoader(path)
+return loader.load()
     pass
 
 def chunk_context_data(context_data: list[Document]) -> list[Document]:
@@ -108,20 +108,20 @@ def get_vector_store(embedding_model: Embeddings = get_embedding_model(), path: 
 
 if __name__ == "__main__":
     # when run as a script, run some tests to demonstrate capabilities
-#    pdfs = (
+        pdfs = (
 #        { "url": "https://quanticedu.github.io/praxa/Longest Running Shows on Broadway 2025.pdf",
 #          "filename": "Longest Running Shows on Broadway.pdf" },
 #        { "url": "https://quanticedu.github.io/praxa/Every play and musical coming to the West End in 2025.pdf",
 #          "filename": "Every play and musical coming to the West End in 2025.pdf" }
 #    )
 #    download_context_data(pdfs)
-#    context_data = load_context_data()
+     context_data = load_context_data()
 #    chunks = chunk_context_data(context_data)
 #    embedding_model = get_embedding_model()
 #    vector_store = create_vector_store(chunks, embedding_model)
 
-#    for page in context_data:
-#        print(page)
+     for page in context_data:
+         print(page)
 
 #    for num, chunk in enumerate(chunks):
 #        print("-----")
