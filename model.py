@@ -2,7 +2,7 @@ from langchain_community.chat_models import ChatOpenAI
 from typing import Optional, Any
 import os
 
-os.environ["OPENROUTER_API_KEY"] = "<your key here>"
+os.environ["OPENROUTER_API_KEY"] = "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"
 
 class ChatModel(ChatOpenAI):
     """
@@ -22,7 +22,7 @@ class ChatModel(ChatOpenAI):
             **kwargs
         )
 
-def get_model(model_name: str = "<default model>") -> ChatModel:
+def get_model(model_name: str = "google/gemma-3-27b-it:free") -> ChatModel:
     """
     Gets a reference to a model
     
